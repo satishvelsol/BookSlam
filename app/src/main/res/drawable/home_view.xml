@@ -14,8 +14,8 @@
         android:color="#91B4E7">
     </solid>
     <padding
-        android:left="33dp"
-        android:top="40dp"
-        android:right="33dp"
-        android:bottom="40dp" />
+        android:left="46dp"
+        android:top="55dp"
+        android:right="46dp"
+        android:bottom="55dp" />
 </shape>

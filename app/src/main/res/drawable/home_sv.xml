@@ -3,8 +3,8 @@
     <corners
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp"
-        android:bottomRightRadius="900dp"
-        android:bottomLeftRadius="900dp">
+        android:bottomRightRadius="1000dp"
+        android:bottomLeftRadius="1000dp">
     </corners>
     <stroke
         android:width="1dp"
@@ -14,8 +14,8 @@
         android:color="#91B4E7">
     </solid>
     <padding
-        android:left="3dp"
-        android:top="3dp"
-        android:right="3dp"
-        android:bottom="3dp" />
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="1dp" />
 </shape>
