@@ -18,5 +18,9 @@ public interface ApiService
 @FormUrlEncoded
 @POST("getFriends.php")
 Call<mainResponse> dataLogin(@Field("u_mobile") String u_mobile) ;
+//search friend list
+@FormUrlEncoded
+@POST("search.php")
+Call<mainResponse> search(@Field("u_mobile") String u_mobile,@Field("key_name") String key_name) ;
 
 }

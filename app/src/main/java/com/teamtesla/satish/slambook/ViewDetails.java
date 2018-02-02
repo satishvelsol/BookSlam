@@ -41,9 +41,35 @@ public class ViewDetails extends AppCompatActivity
         mview_list = findViewById(R.id.view_list);
         search = findViewById(R.id.serach);
         medit = findViewById(R.id.medit);
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        retrofit2.Call<mainResponse> call = service.dataLogin("8330966928");
+        call.enqueue(new Callback<mainResponse>()
+        {
+            @Override
+            public void onResponse(Call<mainResponse> call, Response<mainResponse> response)
+            {
+                if (response.body().getResponse()==200)
+                {
+
+                    baseAdapter=new MyBaseAdapter(ViewDetails.this,response.body().getFriends());
+                    mview_list.setAdapter(baseAdapter);
+                }
+                else
+                {
+                    Toast.makeText(ViewDetails.this, "friend not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<mainResponse> call, Throwable t)
+            {
+                Toast.makeText(ViewDetails.this, "from failure", Toast.LENGTH_SHORT).show();
+
+            }
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 //clicks the button
                 clickMethod();
             }
@@ -53,9 +79,9 @@ public class ViewDetails extends AppCompatActivity
     private void clickMethod()
     {
         //heree code for diaplaying the data on button clicks
-        String nuimber = medit.getText().toString().trim();
+        String name = medit.getText().toString().trim();
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.dataLogin(nuimber);
+        retrofit2.Call<mainResponse> call = service.search("8330966928",name);
         call.enqueue(new Callback<mainResponse>()
         {
             @Override
@@ -63,6 +89,7 @@ public class ViewDetails extends AppCompatActivity
             {
                 if (response.body().getResponse()==200)
                 {
+                    Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
 
                     baseAdapter=new MyBaseAdapter(ViewDetails.this,response.body().getFriends());
                     mview_list.setAdapter(baseAdapter);
