@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="20dp"
             android:layout_gravity="center">
             <TextView
                 android:layout_width="match_parent"
@@ -25,12 +26,10 @@
                 android:textAlignment="center"
                 />
 
-
             <EditText
                 android:id="@+id/mobile_input"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:ems="14"
+                android:layout_width="match_parent"
                 android:maxLength="10"
                 android:inputType="number"
                 android:hint="Mobile Number"
@@ -38,19 +37,20 @@
                 android:padding="10dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_shape"
                 />
 
             <EditText
                 android:id="@+id/password_input"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:ems="14"
+                android:layout_width="match_parent"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textAlignment="center"
                 android:layout_gravity="center"
                 android:padding="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_shape"
                 />
 
             <LinearLayout
@@ -73,7 +73,6 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"/>
-
 
             </LinearLayout>
 

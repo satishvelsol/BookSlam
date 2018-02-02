@@ -24,9 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
             android:padding="15dp"
-            android:layout_gravity="center">
+            >
 
 
             <EditText
@@ -37,7 +36,7 @@
                 android:textAlignment="center"
                 android:padding="10dp"
                 android:background="@drawable/edittext_shape"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 />
 
             <EditText
@@ -130,6 +129,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/edittext_shape"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 />
 
 
@@ -139,7 +139,6 @@
         android:id="@+id/adddetails_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:weightSum="2"
