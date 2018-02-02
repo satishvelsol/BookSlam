@@ -5,34 +5,20 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:weightSum="2">
-     <TextView
-         android:gravity="center"
-         android:text="Name"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"/>
         <TextView
             android:id="@+id/list_name"
             android:layout_width="0dp"
+            android:textStyle="bold"
+            android:textColor="#fbfafc"
             android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="2">
-        <TextView
-            android:gravity="center"
-            android:text="Mobile no"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
             android:id="@+id/list_mobile"
+            android:textColor="#fbfafc"
             android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="wrap_content"
