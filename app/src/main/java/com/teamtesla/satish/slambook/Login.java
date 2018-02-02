@@ -113,7 +113,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     {
 
                         Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
                         Intent intent = new Intent(Login.this,Home.class);
                         startActivity(intent);
 

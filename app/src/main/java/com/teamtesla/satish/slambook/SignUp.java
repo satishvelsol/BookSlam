@@ -83,11 +83,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             mName.setError("Name should not be empty");
             mName.requestFocus();
         }
-        else if(!name.matches(namePattern))
-        {
-            mName.setError("Please enter valid name");
-            mName.requestFocus();
-        }
         else if(email.isEmpty())
         {
             mEmail.setError("Email should not be empty");

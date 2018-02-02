@@ -39,8 +39,8 @@ public class ViewDetails extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_details);
         mview_list = findViewById(R.id.view_list);
-        search = findViewById(R.id.serach);
-        medit = findViewById(R.id.medit);
+        search = findViewById(R.id.search_button);
+        medit = findViewById(R.id.search_input);
         ApiService service = ApiClient.getClient().create(ApiService.class);
         retrofit2.Call<mainResponse> call = service.dataLogin("8330966928");
         call.enqueue(new Callback<mainResponse>()
