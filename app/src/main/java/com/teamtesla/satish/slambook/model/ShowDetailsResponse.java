@@ -12,22 +12,20 @@ public class ShowDetailsResponse {
     List<FriendDetails> friend_details;
     int response;
 
-    public List<FriendDetails> getFriends()
-    {
+    public List<FriendDetails> getFriend_details() {
         return friend_details;
-    }
-
-    public void setFriends(List<FriendDetails> friend) {
-        friend_details = friend;
     }
 
     public int getResponse() {
         return response;
     }
 
-    public void setResponse(int response) {
-    this.response = response;
-}
+    public void setFriend_details(List<FriendDetails> friend_details) {
+        this.friend_details = friend_details;
+    }
 
+    public void setResponse(int response) {
+        this.response = response;
+    }
 }
 

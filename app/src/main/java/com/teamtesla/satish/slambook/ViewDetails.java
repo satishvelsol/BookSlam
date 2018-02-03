@@ -1,7 +1,6 @@
 package com.teamtesla.satish.slambook;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,21 +67,22 @@ public class ViewDetails extends AppCompatActivity
             }
         });
         //goto SHOWDETAILS activity
-        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView m = (TextView)view.findViewById(R.id.list_mobile);
-                String mb = m.getText().toString().trim();
-                Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                TextView m = (TextView)view.findViewById(R.id.list_mobile);
+//                String mb = m.getText().toString().trim();
+//                callShowDetails(mb);
+//                //Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 //clicks the button
-                clickMethod();
+                //clickMethod();
             }
         });
 
@@ -114,15 +114,7 @@ public class ViewDetails extends AppCompatActivity
         });
 
         //goto SHOWDETAILS activity
-        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView m = (TextView)view.findViewById(R.id.list_mobile);
-                String mb = m.getText().toString().trim();
-                //Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
-                callShowDetails(mb);
-            }
-        });
+
     }
 
     private void callShowDetails(String mb) {
@@ -134,10 +126,10 @@ public class ViewDetails extends AppCompatActivity
             public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
 
                 if (response.body().getResponse() == 200) {
-                    FriendDetails fd = new FriendDetails();
+                    //FriendDetails fd = new FriendDetails();
                     //fd.getName();
 
-                    Toast.makeText(ViewDetails.this, ""+fd.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDetails.this, "satish", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(ViewDetails.this, "Friend Details not found", Toast.LENGTH_SHORT).show();
@@ -191,6 +183,8 @@ public class ViewDetails extends AppCompatActivity
                 mViewHolder = new MyViewHolder();
                 mViewHolder.mtext_name = (TextView) view.findViewById(R.id.list_name);
                 mViewHolder.mtext_mobile = (TextView) view.findViewById(R.id.list_mobile);
+                mViewHolder.mviewList_linearLayout = (LinearLayout) view.findViewById(R.id.viewList_linearLayout);
+
 
                 view.setTag(mViewHolder);
             } else {
@@ -200,11 +194,21 @@ public class ViewDetails extends AppCompatActivity
             mViewHolder.mtext_name.setText(friends.get(i).getName());
             mViewHolder.mtext_mobile.setText(friends.get(i).getFmobile());
 
+            mViewHolder.mviewList_linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView m = (TextView)view.findViewById(R.id.list_mobile);
+                    String mb = m.getText().toString().trim();
+                    Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
+                    callShowDetails(mb);
+                }
+            });
             return view;
         }
         private class MyViewHolder
         {
             TextView mtext_name, mtext_mobile;
+            LinearLayout mviewList_linearLayout;
 
         }
     }
