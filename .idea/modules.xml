@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BookSlam.iml" filepath="$PROJECT_DIR$/BookSlam.iml" />
       <module fileurl="file://C:\Users\user2\AndroidStudioProjects\Slambook\BookSlam.iml" filepath="C:\Users\user2\AndroidStudioProjects\Slambook\BookSlam.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Slambook.iml" filepath="$PROJECT_DIR$/Slambook.iml" />
       <module fileurl="file://D:\AndroidProjects\BookSlam\Slambook.iml" filepath="D:\AndroidProjects\BookSlam\Slambook.iml" />
       <module fileurl="file://D:\bookslam\Slambook.iml" filepath="D:\bookslam\Slambook.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
