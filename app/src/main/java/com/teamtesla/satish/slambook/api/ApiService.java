@@ -51,7 +51,7 @@ Call<mainResponse> search(@Field("u_mobile") String u_mobile,
                           @Field("fav_color") String fav_color,
                           @Field("hobbies") String hobbies
                           );
-
+    @FormUrlEncoded
     @POST("showDetails.php")
     Call<ShowDetailsResponse> showdetails(@Field("u_mobile") String u_mobile,
                                           @Field("f_mobile") String f_mobile);

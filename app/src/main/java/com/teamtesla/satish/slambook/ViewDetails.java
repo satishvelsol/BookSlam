@@ -1,6 +1,7 @@
 package com.teamtesla.satish.slambook;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,6 +43,21 @@ public class ViewDetails extends AppCompatActivity
         mview_list = findViewById(R.id.view_list);
         search = findViewById(R.id.search_button);
         medit = findViewById(R.id.search_input);
+
+        callFriends();
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                //clicks the button
+                clickMethod();
+            }
+        });
+
+    }
+
+    private void callFriends() {
         ApiService service = ApiClient.getClient().create(ApiService.class);
         retrofit2.Call<mainResponse> call = service.dataLogin("8330966928");
         call.enqueue(new Callback<mainResponse>()
@@ -66,27 +82,8 @@ public class ViewDetails extends AppCompatActivity
                 Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
-        //goto SHOWDETAILS activity
-//        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                TextView m = (TextView)view.findViewById(R.id.list_mobile);
-//                String mb = m.getText().toString().trim();
-//                callShowDetails(mb);
-//                //Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                //clicks the button
-                //clickMethod();
-            }
-        });
-
     }
+
     private void clickMethod() {
         //heree code for diaplaying the data on button clicks
         String name = medit.getText().toString().trim();
@@ -126,10 +123,32 @@ public class ViewDetails extends AppCompatActivity
             public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
 
                 if (response.body().getResponse() == 200) {
-                    //FriendDetails fd = new FriendDetails();
-                    //fd.getName();
 
-                    Toast.makeText(ViewDetails.this, "satish", Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(ViewDetails.this, ShowDetails.class);
+                    String f_name = response.body().getFriendDetails().name;
+                    i.putExtra("f_name", f_name);
+                    String n_name = response.body().getFriendDetails().nick_name;
+                    i.putExtra("n_name", n_name);
+                    String dob = response.body().getFriendDetails().dob;
+                    i.putExtra("dob", dob);
+                    String mobile = response.body().getFriendDetails().mobile;
+                    i.putExtra("mobile", mobile);
+                    String address = response.body().getFriendDetails().address;
+                    i.putExtra("address", address);
+                    String best_friend = response.body().getFriendDetails().best_friend;
+                    i.putExtra("best_friend", best_friend);
+                    String fav_dish = response.body().getFriendDetails().fav_dish;
+                    i.putExtra("fav_dish", fav_dish);
+                    String fav_color = response.body().getFriendDetails().fav_color;
+                    i.putExtra("fav_color", fav_dish);
+                    String hobbies = response.body().getFriendDetails().hobbies;
+                    i.putExtra("hobbies", hobbies);
+
+                    startActivity(i);
+
+
+                   // Toast.makeText(ViewDetails.this, response.body().getFriendDetails().fav_color+"", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(ViewDetails.this, "Friend Details not found", Toast.LENGTH_SHORT).show();
@@ -199,7 +218,7 @@ public class ViewDetails extends AppCompatActivity
                 public void onClick(View view) {
                     TextView m = (TextView)view.findViewById(R.id.list_mobile);
                     String mb = m.getText().toString().trim();
-                    Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
                     callShowDetails(mb);
                 }
             });
