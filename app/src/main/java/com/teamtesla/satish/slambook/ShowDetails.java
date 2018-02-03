@@ -62,7 +62,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
 
         if (id == R.id.mobile_label) {
             String mob = mMobile.getText().toString();
-            
+
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse(mob));
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
