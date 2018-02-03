@@ -23,7 +23,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
         if(id == R.id.add_button)
         {
             Intent intent = new Intent(Home.this,AddDetails.class);

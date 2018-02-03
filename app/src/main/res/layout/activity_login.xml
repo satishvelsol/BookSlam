@@ -9,42 +9,63 @@
         android:padding="25dp"
         android:layout_gravity="center">
         <TextView
+            style="@style/heading"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
+            android:text="SLAMBOOK"/>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="SLAMBOOK"
-            android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="cursive"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:textAlignment="center" />
-        <EditText
-            android:id="@+id/mobile_input"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/et_linearlayout_background"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/mobile_input"
+                style="@style/edit_text"
+                android:maxLength="10"
+                android:inputType="number"
+                android:hint="Mobile Number" />
+            <LinearLayout
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/edittext_imageview_background">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/phone"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:maxLength="10"
-            android:inputType="number"
-            android:hint="Mobile Number"
-            android:textColorHint="#344353"
-            android:drawableLeft="@drawable/phone"
-            android:backgroundTint="@color/blue"
-            android:drawablePadding="15dp"
-            android:padding="15dp"
-            android:textColor="#344353"
-            android:layout_marginTop="20dp" />
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="#344353"
-            android:drawableLeft="@drawable/lock"
-            android:drawablePadding="15dp"
-            android:padding="15dp"
-            android:backgroundTint="@color/blue"
-            android:textColorHint="#344353"
-            android:layout_marginTop="10dp" />
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/et_linearlayout_background"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/password_input"
+                style="@style/edit_text"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+            <LinearLayout
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/edittext_imageview_background">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/lock"/>
+            </LinearLayout>
+        </RelativeLayout>
+
             <Button
                 android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
@@ -55,7 +76,6 @@
                 android:textSize="25sp"
                 android:background="@drawable/bshape"
                 android:textAllCaps="false"
-
                 android:textColor="@color/white"/>
         <LinearLayout
             android:layout_marginTop="30dp"
@@ -70,7 +90,7 @@
                 android:text="New to Slambook?"
                 android:textSize="16sp"
                 android:gravity="right"
-                android:textColor="#344353"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="italic"
                 android:layout_marginRight="10dp" />
             <TextView
@@ -80,6 +100,7 @@
                 android:layout_width="0dp"
                 android:text="Click Here"
                 android:textSize="18sp"
+                android:fontFamily="serif"
                 android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:textColor="#344353"
@@ -91,8 +112,9 @@
             android:layout_width="match_parent"
             android:text="Forgot Password ?"
             android:gravity="center"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
+            android:textColor="@color/headding_color"
+            android:textSize="20sp"
+            android:fontFamily="serif"
             android:textStyle="bold"
             android:layout_marginTop="15dp" />
     </LinearLayout>
