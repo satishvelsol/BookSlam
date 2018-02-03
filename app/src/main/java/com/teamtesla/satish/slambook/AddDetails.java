@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class AddDetails extends AppCompatActivity implements View.OnClickListener{
 
     EditText mName_et,mNickName_et,mDob_dp,mMobile_et,mAddress_et,mBestfriend_et,mFavDish_et,mFavColor_et,mHobbies_et;
-    Button mSave_btn,mClear_btn;
+    Button mSave_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +39,9 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
         mHobbies_et = (EditText)findViewById(R.id.hobbies_input);
 
         mSave_btn = (Button) findViewById(R.id.save_button);
-        mClear_btn = (Button) findViewById(R.id.clear_button);
+
 
         mSave_btn.setOnClickListener(this);
-        mClear_btn.setOnClickListener(this);
     }
 
     @Override
@@ -53,10 +52,7 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
         {
             saveToServer();
         }
-        else if(id == R.id.clear_button)
-        {
-            clearFields();
-        }
+
     }
 
     private void clearFields() {
@@ -76,9 +72,6 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
 
     private void saveToServer() {
 
-        String namePattern= "/^[A-Za-z ]+$/";
-
-
         String name = mName_et.getText().toString();
         String nick_name =  mNickName_et.getText().toString().trim();
         String dob = mDob_dp.getText().toString();
@@ -92,11 +85,6 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
             if(name.isEmpty())
             {
                 mName_et.setError("Your Name");
-                mName_et.requestFocus();
-            }
-            else if(name.matches(namePattern))
-            {
-                mName_et.setError("Enter valid Name");
                 mName_et.requestFocus();
             }
             else if(nick_name.isEmpty())

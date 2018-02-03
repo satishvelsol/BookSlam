@@ -1,6 +1,6 @@
 package com.teamtesla.satish.slambook.api;
 
-import com.teamtesla.satish.slambook.friends;
+import com.teamtesla.satish.slambook.model.ShowDetailsResponse;
 import com.teamtesla.satish.slambook.model.mainResponse;
 
 import retrofit2.Call;
@@ -51,5 +51,10 @@ Call<mainResponse> search(@Field("u_mobile") String u_mobile,
                           @Field("fav_color") String fav_color,
                           @Field("hobbies") String hobbies
                           );
+
+    @POST("showDetails.php")
+    Call<ShowDetailsResponse> showdetails(@Field("u_mobile") String u_mobile,
+                                          @Field("f_mobile") String f_mobile);
+
 
 }

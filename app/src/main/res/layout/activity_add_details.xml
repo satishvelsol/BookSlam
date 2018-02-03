@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:weightSum="2"
+        android:weightSum="1"
         >
         <Button
             android:id="@+id/save_button"
@@ -154,18 +154,6 @@
             android:textColor="#F8F3F1"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"/>
-        <Button
-            android:id="@+id/clear_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="clear"
-            android:background="@drawable/bshape"
-            android:textStyle="bold"
-            android:textColor="#F8F3F1"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"/>
 
     </LinearLayout>

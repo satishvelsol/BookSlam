@@ -6,6 +6,8 @@
             android:id="@+id/list_name"
             android:layout_width="match_parent"
             android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="name"
             android:gravity="center"
             android:textColor="#fbfafc"
             android:layout_height="wrap_content" />
@@ -13,6 +15,8 @@
             android:id="@+id/list_mobile"
             android:layout_width="match_parent"
             android:gravity="center"
+            android:text="mobile"
+            android:textSize="20sp"
             android:textColor="#fbfafc"
             android:layout_height="wrap_content" />
 </LinearLayout>

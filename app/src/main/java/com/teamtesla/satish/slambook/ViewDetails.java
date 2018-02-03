@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.teamtesla.satish.slambook.api.ApiClient;
 import com.teamtesla.satish.slambook.api.ApiService;
+import com.teamtesla.satish.slambook.model.ShowDetailsResponse;
 import com.teamtesla.satish.slambook.model.mainResponse;
 
 import java.util.List;
@@ -62,10 +64,19 @@ public class ViewDetails extends AppCompatActivity
             @Override
             public void onFailure(Call<mainResponse> call, Throwable t)
             {
-                Toast.makeText(ViewDetails.this, "from failure", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
+        //goto SHOWDETAILS activity
+        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView m = (TextView)view.findViewById(R.id.list_mobile);
+                String mb = m.getText().toString().trim();
+                Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -76,38 +87,73 @@ public class ViewDetails extends AppCompatActivity
         });
 
     }
-    private void clickMethod()
-    {
+    private void clickMethod() {
         //heree code for diaplaying the data on button clicks
         String name = medit.getText().toString().trim();
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.search("8330966928",name);
-        call.enqueue(new Callback<mainResponse>()
-        {
+        retrofit2.Call<mainResponse> call = service.search("8330966928", name);
+        call.enqueue(new Callback<mainResponse>() {
             @Override
-            public void onResponse(Call<mainResponse> call, Response<mainResponse> response)
-            {
-                if (response.body().getResponse()==200)
-                {
+            public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
+                if (response.body().getResponse() == 200) {
                     Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
 
-                    baseAdapter=new MyBaseAdapter(ViewDetails.this,response.body().getFriends());
+                    baseAdapter = new MyBaseAdapter(ViewDetails.this, response.body().getFriends());
                     mview_list.setAdapter(baseAdapter);
-                }
-                else
-                {
+                } else {
                     Toast.makeText(ViewDetails.this, "friend not found", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
-            public void onFailure(Call<mainResponse> call, Throwable t)
-            {
-                Toast.makeText(ViewDetails.this, "from failure", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<mainResponse> call, Throwable t) {
+                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
+
 
             }
         });
 
+        //goto SHOWDETAILS activity
+        mview_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView m = (TextView)view.findViewById(R.id.list_mobile);
+                String mb = m.getText().toString().trim();
+                //Toast.makeText(ViewDetails.this, ""+mb, Toast.LENGTH_SHORT).show();
+                callShowDetails(mb);
+            }
+        });
     }
+
+    private void callShowDetails(String mb) {
+
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<ShowDetailsResponse> call = service.showdetails("8330966928", mb);
+        call.enqueue(new Callback<ShowDetailsResponse>() {
+            @Override
+            public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
+
+                if (response.body().getResponse() == 200) {
+                    FriendDetails fd = new FriendDetails();
+                    //fd.getName();
+
+                    Toast.makeText(ViewDetails.this, ""+fd.getName(), Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(ViewDetails.this, "Friend Details not found", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ShowDetailsResponse> call, Throwable t) {
+
+                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
     class MyBaseAdapter extends BaseAdapter
     {
         Activity context;
