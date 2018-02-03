@@ -9,23 +9,27 @@ import java.util.List;
  */
 
 public class ShowDetailsResponse {
-    List<FriendDetails> friend_details;
+
+    public FriendDetails FriendDetails;
     int response;
 
-    public List<FriendDetails> getFriend_details() {
-        return friend_details;
+    public com.teamtesla.satish.slambook.FriendDetails getFriendDetails() {
+        return FriendDetails;
+    }
+
+    public void setFriendDetails(com.teamtesla.satish.slambook.FriendDetails friendDetails) {
+        FriendDetails = friendDetails;
     }
 
     public int getResponse() {
         return response;
     }
 
-    public void setFriend_details(List<FriendDetails> friend_details) {
-        this.friend_details = friend_details;
-    }
-
     public void setResponse(int response) {
         this.response = response;
     }
-}
 
+
+
+
+}

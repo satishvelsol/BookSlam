@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient
 {
-    public static final String BASE_URL = "https://unrepeated-lenses.000webhostapp.com/slambook/";
+    public static final String BASE_URL = "http://android.velsol.in/slambook/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient()
