@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="heading">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">cursive</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/headding_color</item>
+    </style>
+
+    <style name="edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/edittext_shape</item>
+        <item name="android:paddingLeft">90dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:drawablePadding">25dp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:fontFamily" tools:ignore="NewApi">serif</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+    </style>
 </resources>
