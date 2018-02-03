@@ -31,4 +31,41 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textColorHint">@color/colorPrimaryDark</item>
     </style>
+
+
+    <style name="background_design_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:weightSum">1</item>
+        <item name="android:background">@color/blue</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="background_design_sub_linearlayout">
+        <item name="android:layout_weight">0.1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:weightSum">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="background_design_textview">
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/circle</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="background_design_edittext">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.8</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAlignment" tools:ignore="NewApi">center</item>
+    </style>
 </resources>
