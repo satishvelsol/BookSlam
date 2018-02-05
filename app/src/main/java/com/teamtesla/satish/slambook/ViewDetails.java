@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -91,7 +90,7 @@ public class ViewDetails extends AppCompatActivity
     }
 
     private void clickMethod() {
-        //heree code for diaplaying the data on button clicks
+        //here code for diaplaying the data on button clicks
         String name = medit.getText().toString().trim();
         ApiService service = ApiClient.getClient().create(ApiService.class);
         retrofit2.Call<mainResponse> call = service.search(user_mobile_number, name);
