@@ -1,5 +1,6 @@
 package com.teamtesla.satish.slambook;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +20,18 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
 
     EditText mName_et,mNickName_et,mDob_dp,mMobile_et,mAddress_et,mBestfriend_et,mFavDish_et,mFavColor_et,mHobbies_et;
     Button mSave_btn;
+    SharedPreferences logindetails;
+    SharedPreferences.Editor logindetails_e;
+    String user_mobile_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_details);
+
+        logindetails = getSharedPreferences("slam_book_login_details",MODE_PRIVATE);
+        logindetails_e = logindetails.edit();
+        user_mobile_number = logindetails.getString("Username",null);
+
         initalise();
     }
 
@@ -136,7 +145,7 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
             {
 
                 ApiService service = ApiClient.getClient().create(ApiService.class);
-                Call<MSG> call = service.saveDetails("8330966928",name,nick_name,dob,bfriend,mobile,address,dish,color,hobbies);
+                Call<MSG> call = service.saveDetails(user_mobile_number,name,nick_name,dob,bfriend,mobile,address,dish,color,hobbies);
                 call.enqueue(new Callback<MSG>() {
                     @Override
                     public void onResponse(Call<MSG> call, Response<MSG> response) {

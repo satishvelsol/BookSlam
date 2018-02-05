@@ -56,5 +56,8 @@ Call<mainResponse> search(@Field("u_mobile") String u_mobile,
     Call<ShowDetailsResponse> showdetails(@Field("u_mobile") String u_mobile,
                                           @Field("f_mobile") String f_mobile);
 
+    @FormUrlEncoded
+    @POST("forgotPassword.php")
+    Call<MSG> forgotpassword(@Field("mob_or_mail") String mob_or_mail);
 
 }

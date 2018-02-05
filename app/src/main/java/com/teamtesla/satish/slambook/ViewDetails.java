@@ -2,6 +2,7 @@ package com.teamtesla.satish.slambook;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,8 +34,9 @@ public class ViewDetails extends AppCompatActivity
     ImageView search;
     EditText medit;
     MyBaseAdapter baseAdapter;
-
-
+    SharedPreferences logindetails;
+    SharedPreferences.Editor logindetails_e;
+    String user_mobile_number;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,6 +45,10 @@ public class ViewDetails extends AppCompatActivity
         mview_list = findViewById(R.id.view_list);
         search = findViewById(R.id.search_button);
         medit = findViewById(R.id.search_input);
+
+        logindetails = getSharedPreferences("slam_book_login_details",MODE_PRIVATE);
+        logindetails_e = logindetails.edit();
+        user_mobile_number = logindetails.getString("Username",null);
 
         callFriends();
 
@@ -59,7 +65,7 @@ public class ViewDetails extends AppCompatActivity
 
     private void callFriends() {
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.dataLogin("8330966928");
+        retrofit2.Call<mainResponse> call = service.dataLogin(user_mobile_number);
         call.enqueue(new Callback<mainResponse>()
         {
             @Override
@@ -88,7 +94,7 @@ public class ViewDetails extends AppCompatActivity
         //heree code for diaplaying the data on button clicks
         String name = medit.getText().toString().trim();
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.search("8330966928", name);
+        retrofit2.Call<mainResponse> call = service.search(user_mobile_number, name);
         call.enqueue(new Callback<mainResponse>() {
             @Override
             public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
@@ -117,7 +123,7 @@ public class ViewDetails extends AppCompatActivity
     private void callShowDetails(String mb) {
 
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ShowDetailsResponse> call = service.showdetails("8330966928", mb);
+        Call<ShowDetailsResponse> call = service.showdetails(user_mobile_number, mb);
         call.enqueue(new Callback<ShowDetailsResponse>() {
             @Override
             public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
