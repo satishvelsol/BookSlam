@@ -15,7 +15,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
 
 
     TextView mName, mNickName, mDob, mMobile, mAddress, mBest_friend, mFav_dish, mFav_color, mHobbies;
-
+    public String mobileNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             mFav_dish.setText((String) b.get("fav_dish"));
             mFav_color.setText((String) b.get("fav_color"));
             mHobbies.setText((String) b.get("hobbies"));
+            mobileNumber = (String) b.get("address");
         } else {
             Toast.makeText(this, "False else group", Toast.LENGTH_SHORT).show();
         }
@@ -61,21 +62,9 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
         int id = view.getId();
 
         if (id == R.id.mobile_label) {
-            String mob = mMobile.getText().toString();
+//            Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel:",mobileNumber,null));
+//            startActivity(intent);
 
-            Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse(mob));
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            startActivity(intent);
         }
     }
 }
