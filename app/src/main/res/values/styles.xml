@@ -35,9 +35,8 @@
 
     <style name="background_design_linearlayout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">80dp</item>
         <item name="android:weightSum">1</item>
-        <item name="android:background">@color/blue</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
@@ -53,7 +52,7 @@
         <item name="android:layout_weight">0.5</item>
         <item name="android:layout_width">15dp</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_margin">12.5dp</item>
         <item name="android:background">@drawable/circle</item>
         <item name="android:orientation">vertical</item>
     </style>
@@ -63,6 +62,7 @@
         <item name="android:layout_weight">0.8</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:background">@android:color/transparent</item>

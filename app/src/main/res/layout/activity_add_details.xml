@@ -7,12 +7,15 @@
         android:id="@+id/adddetails_heading"
         android:text="Enter Friend Details"
         android:gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="serif"
+        android:textSize="35sp"
+        android:fontFamily="cursive"
+        android:layout_marginTop="10dp"
         android:padding="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold|italic"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="70dp" />
 
     <ScrollView
         android:layout_below="@+id/adddetails_heading"
@@ -22,9 +25,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#D0EF84">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -47,7 +52,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#F4D143">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -70,7 +76,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#FDA831">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -93,7 +100,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#DE561C">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -116,7 +124,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#F9ED69">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -139,7 +148,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#F08A5D">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -162,7 +172,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#B83B5E">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -185,7 +196,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#6A2C70">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -208,7 +220,8 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout">
+                style="@style/background_design_linearlayout"
+                android:background="#FCE38A">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
