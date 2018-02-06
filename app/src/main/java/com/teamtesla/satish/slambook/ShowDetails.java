@@ -53,7 +53,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             mHobbies.setText((String) b.get("hobbies"));
             mobileNumber = (String) b.get("address");
         } else {
-            Toast.makeText(this, "False else group", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "False else group", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -62,6 +62,11 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
         int id = view.getId();
 
         if (id == R.id.mobile_label) {
+
+            Intent i = new Intent(ShowDetails.this, DialogBox.class);
+            i.putExtra("mobile", mobileNumber);
+            startActivity(i);
+
 //            Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel:",mobileNumber,null));
 //            startActivity(intent);
 

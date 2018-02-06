@@ -101,7 +101,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void onClick(View v) {
                     final String username = mobile_email.getText().toString();
-                    Toast.makeText(Login.this, "button working"+ username,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Login.this, "button working"+ username,Toast.LENGTH_SHORT).show();
 
                     ApiService service = ApiClient.getClient().create(ApiService.class);
                     Call<MSG> call = service.forgotpassword(username);
