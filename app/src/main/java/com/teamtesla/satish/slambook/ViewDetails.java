@@ -98,12 +98,12 @@ public class ViewDetails extends AppCompatActivity
             @Override
             public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
                 if (response.body().getResponse() == 200) {
-                    Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
 
                     baseAdapter = new MyBaseAdapter(ViewDetails.this, response.body().getFriends());
                     mview_list.setAdapter(baseAdapter);
                 } else {
-                    Toast.makeText(ViewDetails.this, "friend not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDetails.this, "Friends Not Found", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -115,7 +115,6 @@ public class ViewDetails extends AppCompatActivity
             }
         });
 
-        //goto SHOWDETAILS activity
 
     }
 

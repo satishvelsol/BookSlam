@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         else if(id == R.id.forgot_label)
         {
             LayoutInflater inflater = LayoutInflater.from(this);
-            View forget_password_alert_message = inflater.inflate(R.layout.forget_password_alert, null, false);
+            View forget_password_alert_message = inflater.inflate(R.layout.forgot_password_alert, null, false);
             Button mok_btn = (Button)forget_password_alert_message.findViewById(R.id.ok_forget_password_label);
             Button mcancel_btn = (Button)forget_password_alert_message.findViewById(R.id.cancel_forget_password_label);
             final EditText mobile_email = (EditText)forget_password_alert_message.findViewById(R.id.mobile_or_email_label);
@@ -111,36 +111,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             if(response.body().getSuccess() == 0)
                             {
                                 Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-
+                                ad.dismiss();
                             }
                             else  if(response.body().getSuccess() == 1)
                             {
                                 mobile_email.setError(response.body().getMessage());
-                                Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                               // Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
                                 mobile_email.setError(response.body().getMessage());
-                                Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                         @Override
                         public void onFailure(Call<MSG> call, Throwable t) {
-                            Toast.makeText(Login.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
                         }
                     });
-//                    try
-//                    {
-//                        String qry = " update " + LeaveManageDB.TABLE2 + " set " + LeaveManageDB.COLU6 + " = 'Approved'," + LeaveManageDB.COLU5 + " = '" + depart + "' where " + LeaveManageDB.COLU9 + " = '" + Email + "'";
-//                        db.rawQuery(qry, null);
-//                    }
-//                    catch (Exception e)
-//                    {
-//                        Toast.makeText(getContext(), "Sorry unable to Approve Please Try Again Later",Toast.LENGTH_SHORT).show();
-//                    }
-
-
-                    //ad.dismiss();
                 }
             });
         }
