@@ -2,10 +2,9 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <TextView
         android:id="@+id/adddetails_heading"
-        android:text="Enter Friend Details"
+        android:text="Add to Slam Book"
         android:gravity="center"
         android:textSize="35sp"
         android:fontFamily="cursive"
@@ -13,10 +12,8 @@
         android:padding="10dp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold|italic"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp" />
-
+        android:layout_height="60dp" />
     <ScrollView
         android:layout_below="@+id/adddetails_heading"
         android:layout_width="match_parent"
@@ -25,11 +22,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:orientation="vertical">
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#D0EF84">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -52,8 +47,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#F4D143">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -76,8 +70,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#FDA831">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -100,8 +93,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#DE561C">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -124,8 +116,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#F9ED69">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -148,8 +139,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#F08A5D">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -172,8 +162,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#B83B5E">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -196,8 +185,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#6A2C70">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -220,8 +208,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                style="@style/background_design_linearlayout"
-                android:background="#FCE38A">
+                style="@style/background_design_linearlayout">
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -243,23 +230,21 @@
                         style="@style/background_design_textview"/>
                 </LinearLayout>
             </LinearLayout>
-
-
-
-
         </LinearLayout>
     </ScrollView>
     <Button
         android:id="@+id/save_button"
-        style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:fontFamily="serif"
         android:layout_margin="10dp"
-        android:background="@drawable/bshape"
-        android:textStyle="bold"
-        android:textColor="#F8F3F1"
+        android:background="@drawable/add_details_button"
+        android:textStyle="bold|italic"
+        android:textColor="@color/white"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 </RelativeLayout>
