@@ -23,7 +23,8 @@
         <activity android:name=".Home" />
         <activity android:name=".AddDetails" />
         <activity android:name=".SignUp" />
-        <activity android:name=".ShowDetails"></activity>
+        <activity android:name=".ShowDetails" />
+        <activity android:name=".DialogBox"></activity>
     </application>
 
 </manifest>
