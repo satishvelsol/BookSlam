@@ -1,23 +1,80 @@
 <LinearLayout android:id="@+id/viewList_linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
         <TextView
-            android:id="@+id/list_name"
-            android:layout_width="match_parent"
+            android:layout_weight="0.45"
+            android:layout_width="0dp"
             android:textStyle="bold"
-            android:textSize="25sp"
+            android:textSize="20sp"
+            android:fontFamily="cursive"
+            android:paddingLeft="15dp"
+            android:text="Name"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_weight="0.05"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text=":"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_weight="0.5"
+            android:id="@+id/list_name"
+            android:layout_width="0dp"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
             android:text="name"
-            android:gravity="center"
-            android:textColor="#fbfafc"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:layout_weight="0.45"
+            android:layout_width="0dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Mobile No"
+            android:fontFamily="cursive"
+            android:paddingLeft="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_weight="0.05"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text=":"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
         <TextView
             android:id="@+id/list_mobile"
-            android:layout_width="match_parent"
-            android:gravity="center"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:textStyle="bold|italic"
+            android:layout_height="wrap_content"
             android:text="mobile"
             android:textSize="20sp"
-            android:textColor="#fbfafc"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/red"/>
 </LinearLayout>

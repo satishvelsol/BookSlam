@@ -8,4 +8,15 @@
     <color name="blue">#3DC7BE</color>
     <color name="white">#ffffff</color>
     <color name="headding_color">#295F4E</color>
+    <color name="color1_design">#08D9D6</color>
+    <color name="color2_design">#F73859</color>
+    <color name="color3_design">#384259</color>
+    <color name="color4_design">#FF7C38</color>
+    <color name="color5_design">#00ADB5</color>
+    <color name="color6_design">#B80D57</color>
+    <color name="color7design">#F9ED69</color>
+    <color name="color8_design">#E84545</color>
+    <color name="color9_design">#455D7A</color>
+
+    <color name="paper_strip_blue">#4462bc</color>
 </resources>

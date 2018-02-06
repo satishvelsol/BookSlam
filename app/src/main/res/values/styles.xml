@@ -37,6 +37,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:weightSum">1</item>
+        <item name="android:background">@drawable/paper_strip_background</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
@@ -67,5 +68,21 @@
         <item name="android:textColorHint">@color/white</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textAlignment" tools:ignore="NewApi">center</item>
+    </style>
+
+    <style name="show_details_relative_layout">
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color5_design</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="show_details_textview_label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:fontFamily" tools:ignore="NewApi">cursive</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

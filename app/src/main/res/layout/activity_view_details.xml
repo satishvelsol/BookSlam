@@ -4,32 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/b1">
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_height="65dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:background="@drawable/et_linearlayout_background"
         android:gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp">
         <EditText
             android:id="@+id/search_input"
-            android:layout_width="0dp"
-            android:layout_weight="1.3"
+            android:layout_width="match_parent"
             android:hint="Search by Name"
-            android:padding="10dp"
+            android:padding="20dp"
             android:background="@drawable/edittext_shape"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
         <ImageView
             android:id="@+id/search_button"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
+            android:layout_width="40dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/search"
-            android:layout_height="50dp" />
-    </LinearLayout>
+            android:layout_height="40dp" />
+    </RelativeLayout>
     <ListView
         android:id="@+id/view_list"
-        android:layout_marginTop="15dp"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
