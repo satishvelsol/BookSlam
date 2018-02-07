@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="300dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/alert_background"
     android:padding="10dp"
-    android:layout_height="240dp">
+    >
 
     <TextView
         android:id="@+id/call_message_alert_heading"
@@ -21,7 +23,7 @@
         android:textStyle="bold|italic" />
     <View
         android:id="@+id/call_message_alert_view"
-        android:layout_width="match_parent"
+        android:layout_width="285dp"
         android:layout_height="2dp"
         android:layout_below="@+id/call_message_alert_heading"
         />
@@ -30,7 +32,7 @@
         android:layout_below="@+id/call_message_alert_view"
         android:layout_above="@+id/call_message_alert_view2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
         android:gravity="center"
         android:hint="@string/would_you_like_to_call_or_sms"
         android:textColor="@color/colorPrimaryDark"
@@ -45,8 +47,8 @@
     <LinearLayout
         android:id="@+id/call_message_alert_buttons_ll"
         android:layout_width="match_parent"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
-        android:layout_height="50dp"
         android:weightSum="1"
         android:background="@color/colorPrimaryDark"
         android:orientation="horizontal">
@@ -91,4 +93,4 @@
             android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
