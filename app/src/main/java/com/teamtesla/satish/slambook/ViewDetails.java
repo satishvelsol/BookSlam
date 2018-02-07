@@ -78,7 +78,7 @@ public class ViewDetails extends AppCompatActivity
                 }
                 else
                 {
-                    Toast.makeText(ViewDetails.this, "friend not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDetails.this, "Friends not found", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

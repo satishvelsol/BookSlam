@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -88,7 +89,14 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             call_sms_dialog_builder.setCancelable(true);
             final AlertDialog ad = call_sms_dialog_builder.create();
             ad.show();
-            ad.getWindow().setLayout(600, 480);
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(ad.getWindow().getAttributes());
+            lp.width = 600;
+            lp.height = 500;
+            //lp.x=-170;
+            //lp.y=100;
+            ad.getWindow().setAttributes(lp);
+            //ad.getWindow().setLayout(600, 480);
             ad.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
             mCall_btn.setOnClickListener(new View.OnClickListener() {
