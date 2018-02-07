@@ -88,7 +88,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             call_sms_dialog_builder.setCancelable(true);
             final AlertDialog ad = call_sms_dialog_builder.create();
             ad.show();
-            ad.getWindow().setLayout(600, 480);
+            //ad.getWindow().setLayout(600, 480);
             ad.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
             mCall_btn.setOnClickListener(new View.OnClickListener() {
