@@ -18,11 +18,12 @@
             android:orientation="vertical"
             android:gravity="center">
             <RelativeLayout
+
                 style="@style/show_details_relative_layout">
                 <TextView
                     android:id="@+id/name_label"
                     style="@style/show_details_textview_label"
-                    android:text="name"/>
+                    android:text="Name"/>
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"
@@ -34,7 +35,7 @@
                 <TextView
                     android:id="@+id/nick_name_label"
                     style="@style/show_details_textview_label"
-                    android:text="nick name" />
+                    android:text="Nick name" />
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"
@@ -46,7 +47,7 @@
                 <TextView
                     android:id="@+id/dob_label"
                     style="@style/show_details_textview_label"
-                    android:text="dob" />
+                    android:text="Dob" />
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"
@@ -59,7 +60,8 @@
                 <TextView
                     android:id="@+id/mobile_label"
                     style="@style/show_details_textview_label"
-                    android:text="8330966928"/>
+                    android:text="8330966928"
+                    />
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"
@@ -71,7 +73,8 @@
                 <TextView
                     android:id="@+id/address_label"
                     style="@style/show_details_textview_label"
-                    android:text="Address"/>
+                    android:text="Address"
+                    android:textSize="25sp"/>
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"
@@ -107,7 +110,7 @@
                 <TextView
                     android:id="@+id/color_label"
                     style="@style/show_details_textview_label"
-                    android:text="nick name"/>
+                    android:text="Colour"/>
                 <TextView
                     android:layout_width="80dp"
                     android:layout_alignParentRight="true"

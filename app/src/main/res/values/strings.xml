@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Slambook</string>
     <string name="sign_up">Sign up</string>
+    <string name="would_you_like_to_call_or_sms">Would you like to \nCall or SMS ?</string>
+    <string name="call">CALL</string>
+    <string name="sms">SMS</string>
+    <string name="select_any_option">Select Any Option</string>
 </resources>
