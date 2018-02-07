@@ -4,51 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/teddy_bear_holding"
-    tools:context="com.teamtesla.satish.slambook.Home">
+    android:gravity="center"
+    android:background="@drawable/teddy_bear_holding">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/add_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="95dp"
-            android:weightSum="2">
-
-            <Button
-                android:id="@+id/add_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="add friend"
-                android:background="@drawable/home_xladd"
-                android:textStyle="bold"
-                android:textSize="40sp"
-                android:textColor="#F8F3F1"
-                android:layout_weight="1"
-                android:layout_gravity="center"/>
-
-
-            <Button
-                android:id="@+id/view_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="view friends"
-                android:background="@drawable/home_xlv"
-                android:textStyle="bold"
-                android:textSize="40sp"
-                android:textColor="#F8F3F1"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                />
-
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="0dp"
+            android:text="@string/add_friend"
+            android:background="@drawable/home_add"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:paddingTop="15dp"
+            android:textSize="40sp"
+            android:textColor="#F8F3F1"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/view_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/view_friends"
+            android:textAllCaps="false"
+            android:background="@drawable/home_view"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:paddingBottom="15dp"
+            android:textColor="#F8F3F1"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
 </LinearLayout>
 

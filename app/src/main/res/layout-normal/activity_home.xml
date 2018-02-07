@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@drawable/teddy_bear_holding"
+    android:background="@color/white"
     tools:context="com.teamtesla.satish.slambook.Home">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/teddy_bear_holding"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
         <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="380dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="2dp"
             android:orientation="vertical"
-            android:layout_marginTop="70dp"
-            android:gravity="center"
-            android:layout_marginLeft="20dp"
             android:weightSum="2">
             <Button
                 android:id="@+id/add_button"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="@string/add_friend"
                 android:background="@drawable/home_add"
                 android:textStyle="bold"
-                android:textSize="35sp"
-                android:textAllCaps="false"
-                android:paddingTop="25dp"
+                android:paddingTop="15dp"
+                android:text="@string/add_friend"
                 android:fontFamily="serif"
+                android:textSize="20sp"
+                android:textAllCaps="false"
                 android:textColor="#F8F3F1"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/view_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:fontFamily="serif"
                 android:text="@string/view_friends"
-                android:textAllCaps="false"
-                android:paddingBottom="25dp"
+                android:textSize="20sp"
+                android:fontFamily="serif"
+                android:paddingBottom="15dp"
                 android:background="@drawable/home_view"
                 android:textStyle="bold"
-                android:textSize="35sp"
-                android:textColor="#F8F3F1"
                 android:layout_weight="1"
-                android:layout_marginTop="10dp" />
-
+                android:textAllCaps="false"
+                android:textColor="#F8F3F1"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
-</LinearLayout>
-
+    </LinearLayout>
+</RelativeLayout>
