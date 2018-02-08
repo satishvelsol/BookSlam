@@ -2,11 +2,13 @@ package com.teamtesla.satish.slambook;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +31,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        if(!MyApplication.isNetworkAvailable(this))
+        {
+            checkInternet();
+        }
+
         initialise();
     }
+
+    private void checkInternet() {
+        View view = findViewById(R.id.sign_up_linear_layout);
+        String message = "Please check with your internet connection";
+        int duration = Snackbar.LENGTH_LONG;
+        Snackbar.make(view, message, duration).show();
+    }
+
     private void initialise() {
 
         mSignup_btn = (Button)findViewById(R.id.sign_up_button);
@@ -58,7 +74,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         {
 
             signUp();
-
         }
         else if(id == R.id.link_login)
         {
@@ -70,88 +85,75 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void signUp() {
-        String name = mName.getText().toString();
-        String email = mEmail.getText().toString().trim();
-        String mobile = mMobile.getText().toString().trim();
-        String password = mPassword.getText().toString();
 
-        String namePattern= "/^[A-Za-z ]+$/";
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if(!MyApplication.isNetworkAvailable(this))
+        {
+            checkInternet();
+        } else {
+            String name = mName.getText().toString();
+            String email = mEmail.getText().toString().trim();
+            String mobile = mMobile.getText().toString().trim();
+            String password = mPassword.getText().toString();
 
-        if(name.isEmpty())
-        {
-            mName.setError("Name should not be empty");
-            mName.requestFocus();
-        }
-        else if(email.isEmpty())
-        {
-            mEmail.setError("Email should not be empty");
-            mEmail.requestFocus();
-        }
-        else if(!email.matches(emailPattern))
-        {
-            mEmail.setError("Please enter valid email");
-            mEmail.requestFocus();
-        }
-        else if(mobile.isEmpty())
-        {
-            mMobile.setError("Mobile number should not be empty");
-            mMobile.requestFocus();
-        }
-        else if(mobile.length()!=10)
-        {
-            mMobile.setError("Please enter valid Mobile number");
-            mMobile.requestFocus();
-        }
-        else if(password.isEmpty()){
-            mPassword.setError("Password should not be empty");
-            mPassword.requestFocus();
-        }
-        else if(password.length()<=4)
-        {
-            mPassword.setError("Password length must be more than 4");
-            mPassword.requestFocus();
-        }
-        else
-        {
-            //call api
+            String namePattern = "^[a-zA-Z\\s]+$";
+            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+            if (name.isEmpty()) {
+                mName.setError("Name should not be empty");
+                mName.requestFocus();
+            } else if (!name.matches(namePattern)) {
+                mName.setError("Please Enter Valid Name");
+                mName.requestFocus();
+            } else if (email.isEmpty()) {
+                mEmail.setError("Email should not be empty");
+                mEmail.requestFocus();
+            } else if (!email.matches(emailPattern)) {
+                mEmail.setError("Please Enter Valid Email");
+                mEmail.requestFocus();
+            } else if (mobile.isEmpty()) {
+                mMobile.setError("Mobile number should not be empty");
+                mMobile.requestFocus();
+            } else if (mobile.length() != 10) {
+                mMobile.setError("Please enter valid Mobile number");
+                mMobile.requestFocus();
+            } else if (password.isEmpty()) {
+                mPassword.setError("Password should not be empty");
+                mPassword.requestFocus();
+            } else if (password.length() <= 4) {
+                mPassword.setError("Password length must be more than 4");
+                mPassword.requestFocus();
+            } else {
+                //call api
 //            Toast.makeText(this, "Registered Successfully", Toast.LENGTH_SHORT).show();
 //            Intent intent = new Intent(SignUp.this,AddDetails.class);
 //            startActivity(intent);
 //
-            ApiService service = ApiClient.getClient().create(ApiService.class);
-            Call<MSG> call = service.userSignup(name,email,mobile,password);
-            call.enqueue(new Callback<MSG>() {
-                @Override
-                public void onResponse(Call<MSG> call, Response<MSG> response) {
-                    if(response.body().getSuccess() == 0)
-                    {
-                        Toast.makeText(SignUp.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        mName.setText("");
-                        mEmail.setText("");
-                        mMobile.setText("");
-                        mPassword.setText("");
+                ApiService service = ApiClient.getClient().create(ApiService.class);
+                Call<MSG> call = service.userSignup(name, email, mobile, password);
+                call.enqueue(new Callback<MSG>() {
+                    @Override
+                    public void onResponse(Call<MSG> call, Response<MSG> response) {
+                        if (response.body().getSuccess() == 0) {
+                            Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            mName.setText("");
+                            mEmail.setText("");
+                            mMobile.setText("");
+                            mPassword.setText("");
+                        } else if (response.body().getSuccess() == 2) {
+                            Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else  if(response.body().getSuccess() == 2)
-                    {
-                        Toast.makeText(SignUp.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    @Override
+                    public void onFailure(Call<MSG> call, Throwable t) {
+                        checkInternet();
                     }
-                    else
-                    {
-                        Toast.makeText(SignUp.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                });
 
-                @Override
-                public void onFailure(Call<MSG> call, Throwable t) {
+            }
 
-                    Toast.makeText(SignUp.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-         }
-
-
+        }
     }
 }

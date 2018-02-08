@@ -5,6 +5,7 @@
     <string name="call">CALL</string>
     <string name="sms">SMS</string>
     <string name="select_any_option">Select Any Option</string>
-    <string name="add_friend">Add Friend</string>
+
     <string name="view_friends">View Friends</string>
+    <string name="add_friend">Add Friend</string>
 </resources>

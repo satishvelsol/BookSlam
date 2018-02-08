@@ -3,6 +3,7 @@ package com.teamtesla.satish.slambook;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -56,118 +57,132 @@ public class ViewDetails extends AppCompatActivity
             public void onClick(View view)
             {
                 //clicks the button
+
                 clickMethod();
             }
         });
 
     }
 
-    private void callFriends() {
-        ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.dataLogin(user_mobile_number);
-        call.enqueue(new Callback<mainResponse>()
-        {
-            @Override
-            public void onResponse(Call<mainResponse> call, Response<mainResponse> response)
-            {
-                if (response.body().getResponse()==200)
-                {
+    private void checkInternet() {
+        View view = findViewById(R.id.view_details_linear_layout);
+        String message = "Please check with your internet connection";
+        int duration = Snackbar.LENGTH_LONG;
+        Snackbar.make(view, message, duration).show();
+    }
 
-                    baseAdapter=new MyBaseAdapter(ViewDetails.this,response.body().getFriends());
-                    mview_list.setAdapter(baseAdapter);
+    private void callFriends() {
+        if (!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        } else {
+            ApiService service = ApiClient.getClient().create(ApiService.class);
+            retrofit2.Call<mainResponse> call = service.dataLogin(user_mobile_number);
+            call.enqueue(new Callback<mainResponse>() {
+                @Override
+                public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
+                    if (response.body().getResponse() == 200) {
+
+                        baseAdapter = new MyBaseAdapter(ViewDetails.this, response.body().getFriends());
+                        mview_list.setAdapter(baseAdapter);
+                    } else {
+                        Toast.makeText(ViewDetails.this, "Friends not found", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else
-                {
-                    Toast.makeText(ViewDetails.this, "Friends not found", Toast.LENGTH_SHORT).show();
+
+                @Override
+                public void onFailure(Call<mainResponse> call, Throwable t) {
+                    Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
                 }
-            }
-            @Override
-            public void onFailure(Call<mainResponse> call, Throwable t)
-            {
-                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-            }
-        });
+            });
+        }
     }
 
     private void clickMethod() {
-        //here code for diaplaying the data on button clicks
-        String name = medit.getText().toString().trim();
-        ApiService service = ApiClient.getClient().create(ApiService.class);
-        retrofit2.Call<mainResponse> call = service.search(user_mobile_number, name);
-        call.enqueue(new Callback<mainResponse>() {
-            @Override
-            public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
-                if (response.body().getResponse() == 200) {
-                    //Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
+        if (!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        } else {
+            //here code for diaplaying the data on button clicks
+            String name = medit.getText().toString().trim();
+            ApiService service = ApiClient.getClient().create(ApiService.class);
+            retrofit2.Call<mainResponse> call = service.search(user_mobile_number, name);
+            call.enqueue(new Callback<mainResponse>() {
+                @Override
+                public void onResponse(Call<mainResponse> call, Response<mainResponse> response) {
+                    if (response.body().getResponse() == 200) {
+                        //Toast.makeText(ViewDetails.this, "success", Toast.LENGTH_SHORT).show();
 
-                    baseAdapter = new MyBaseAdapter(ViewDetails.this, response.body().getFriends());
-                    mview_list.setAdapter(baseAdapter);
-                } else {
-                    Toast.makeText(ViewDetails.this, "Friends Not Found", Toast.LENGTH_SHORT).show();
+                        baseAdapter = new MyBaseAdapter(ViewDetails.this, response.body().getFriends());
+                        mview_list.setAdapter(baseAdapter);
+                    } else {
+                        Toast.makeText(ViewDetails.this, "Friends Not Found", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<mainResponse> call, Throwable t) {
-                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
+                @Override
+                public void onFailure(Call<mainResponse> call, Throwable t) {
+                    Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
 
 
+                }
+            });
+
+        }
     }
 
     private void callShowDetails(String mb) {
 
-        ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<ShowDetailsResponse> call = service.showdetails(user_mobile_number, mb);
-        call.enqueue(new Callback<ShowDetailsResponse>() {
-            @Override
-            public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
+        if (!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        } else {
 
-                if (response.body().getResponse() == 200) {
+            ApiService service = ApiClient.getClient().create(ApiService.class);
+            Call<ShowDetailsResponse> call = service.showdetails(user_mobile_number, mb);
+            call.enqueue(new Callback<ShowDetailsResponse>() {
+                @Override
+                public void onResponse(Call<ShowDetailsResponse> call, Response<ShowDetailsResponse> response) {
 
-
-                    Intent i = new Intent(ViewDetails.this, ShowDetails.class);
-                    String f_name = response.body().getFriendDetails().name;
-                    i.putExtra("f_name", f_name);
-                    String n_name = response.body().getFriendDetails().nick_name;
-                    i.putExtra("n_name", n_name);
-                    String dob = response.body().getFriendDetails().dob;
-                    i.putExtra("dob", dob);
-                    String mobile = response.body().getFriendDetails().mobile;
-                    i.putExtra("mobile", mobile);
-                    String address = response.body().getFriendDetails().address;
-                    i.putExtra("address", address);
-                    String best_friend = response.body().getFriendDetails().best_friend;
-                    i.putExtra("best_friend", best_friend);
-                    String fav_dish = response.body().getFriendDetails().fav_dish;
-                    i.putExtra("fav_dish", fav_dish);
-                    String fav_color = response.body().getFriendDetails().fav_color;
-                    i.putExtra("fav_color", fav_dish);
-                    String hobbies = response.body().getFriendDetails().hobbies;
-                    i.putExtra("hobbies", hobbies);
-
-                    startActivity(i);
+                    if (response.body().getResponse() == 200) {
 
 
-                   // Toast.makeText(ViewDetails.this, response.body().getFriendDetails().fav_color+"", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(ViewDetails.this, ShowDetails.class);
+                        String f_name = response.body().getFriendDetails().name;
+                        i.putExtra("f_name", f_name);
+                        String n_name = response.body().getFriendDetails().nick_name;
+                        i.putExtra("n_name", n_name);
+                        String dob = response.body().getFriendDetails().dob;
+                        i.putExtra("dob", dob);
+                        String mobile = response.body().getFriendDetails().mobile;
+                        i.putExtra("mobile", mobile);
+                        String address = response.body().getFriendDetails().address;
+                        i.putExtra("address", address);
+                        String best_friend = response.body().getFriendDetails().best_friend;
+                        i.putExtra("best_friend", best_friend);
+                        String fav_dish = response.body().getFriendDetails().fav_dish;
+                        i.putExtra("fav_dish", fav_dish);
+                        String fav_color = response.body().getFriendDetails().fav_color;
+                        i.putExtra("fav_color", fav_dish);
+                        String hobbies = response.body().getFriendDetails().hobbies;
+                        i.putExtra("hobbies", hobbies);
 
-                } else {
-                    Toast.makeText(ViewDetails.this, "Friend Details not found", Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+
+
+                        // Toast.makeText(ViewDetails.this, response.body().getFriendDetails().fav_color+"", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(ViewDetails.this, "Friend Details not found", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<ShowDetailsResponse> call, Throwable t) {
 
-            @Override
-            public void onFailure(Call<ShowDetailsResponse> call, Throwable t) {
-
-                Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
-
 
     class MyBaseAdapter extends BaseAdapter
     {
