@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         logindetails = getSharedPreferences("slam_book_login_details",MODE_PRIVATE);
         logindetails_e = logindetails.edit();
+
         boolean res = logindetails.getBoolean("k1",false);
         if (res)
         {
@@ -48,7 +51,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
         }
         initialise();
+        if(!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        }
     }
+
+
 
     private void initialise() {
         mSignupLink = (TextView)findViewById(R.id.link_signup);
@@ -63,6 +71,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mForgot_link.setOnClickListener(this);
     }
 
+    private void checkInternet() {
+        View view = findViewById(R.id.login_linear_layout);
+        String message = "Please check with your internet connection";
+        int duration = Snackbar.LENGTH_LONG;
+        Snackbar.make(view, message, duration).show();
+    }
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -78,6 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
         else if(id == R.id.forgot_label)
         {
+
             LayoutInflater inflater = LayoutInflater.from(this);
             View forget_password_alert_message = inflater.inflate(R.layout.forgot_password_alert, null, false);
             Button mok_btn = (Button)forget_password_alert_message.findViewById(R.id.ok_forget_password_label);
@@ -137,66 +152,58 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     });
                 }
             });
-        }
+        
+    }
     }
     private void signIn() {
-        final String mobile = mMobile.getText().toString().trim();
-        final String password = mPassword.getText().toString();
-        if(mobile.isEmpty())
-        {
-            mMobile.setError("Mobile number should not be empty");
-            mMobile.requestFocus();
-        }
-        else if(mobile.length()!=10)
-        {
-            mMobile.setError("Please enter valid Mobile number");
-            mMobile.requestFocus();
-        }
-        else if(password.isEmpty()){
-            mPassword.setError("Password should not be empty");
-            mPassword.requestFocus();
-        }
-        else if(password.length() <=4)
-        {
-            mPassword.setError("Password length must be than 4");
-            mPassword.requestFocus();
-        }
-        else
-        {
-            ApiService service = ApiClient.getClient().create(ApiService.class);
-            Call<MSG> call = service.userLogin(mobile,password);
-            call.enqueue(new Callback<MSG>() {
-                @Override
-                public void onResponse(Call<MSG> call, Response<MSG> response) {
-                    if(response.body().getSuccess() == 0)
-                    {
-                        logindetails_e.putBoolean("k1", true);
-                        logindetails_e.putString("Username", mobile);
-                        logindetails_e.commit();
-                        Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this,Home.class);
-                        startActivity(intent);
 
+        if (!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        } else {
+            final String mobile = mMobile.getText().toString().trim();
+            final String password = mPassword.getText().toString();
+            if (mobile.isEmpty()) {
+                mMobile.setError("Mobile number should not be empty");
+                mMobile.requestFocus();
+            } else if (mobile.length() != 10) {
+                mMobile.setError("Please enter valid Mobile number");
+                mMobile.requestFocus();
+            } else if (password.isEmpty()) {
+                mPassword.setError("Password should not be empty");
+                mPassword.requestFocus();
+            } else if (password.length() <= 4) {
+                mPassword.setError("Password length must be than 4");
+                mPassword.requestFocus();
+            } else {
+                ApiService service = ApiClient.getClient().create(ApiService.class);
+                Call<MSG> call = service.userLogin(mobile, password);
+                call.enqueue(new Callback<MSG>() {
+                    @Override
+                    public void onResponse(Call<MSG> call, Response<MSG> response) {
+                        if (response.body().getSuccess() == 0) {
+                            logindetails_e.putBoolean("k1", true);
+                            logindetails_e.putString("Username", mobile);
+                            logindetails_e.commit();
+                            Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Login.this, Home.class);
+                            startActivity(intent);
+
+                        } else if (response.body().getSuccess() == 2) {
+                            Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else  if(response.body().getSuccess() == 2)
-                    {
-                        Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    @Override
+                    public void onFailure(Call<MSG> call, Throwable t) {
+
+                        checkInternet();
                     }
-                    else
-                    {
-                        Toast.makeText(Login.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                });
+            }
 
-                @Override
-                public void onFailure(Call<MSG> call, Throwable t) {
-
-                    Toast.makeText(Login.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-
-                }
-            });
         }
-
     }
 
 }

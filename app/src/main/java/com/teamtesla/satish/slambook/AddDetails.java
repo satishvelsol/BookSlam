@@ -1,6 +1,7 @@
 package com.teamtesla.satish.slambook;
 
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,9 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
         user_mobile_number = logindetails.getString("Username",null);
 
         initalise();
+        if(!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        }
     }
 
     private void initalise() {
@@ -51,6 +55,12 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
 
 
         mSave_btn.setOnClickListener(this);
+    }
+    private void checkInternet() {
+        View view = findViewById(R.id.add_details_relative_layout);
+        String message = "Please check with your internet connection";
+        int duration = Snackbar.LENGTH_LONG;
+        Snackbar.make(view, message, duration).show();
     }
 
     @Override
@@ -81,6 +91,9 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
 
     private void saveToServer() {
 
+        if(!MyApplication.isNetworkAvailable(this)) {
+            checkInternet();
+        }
         String name = mName_et.getText().toString();
         String nick_name =  mNickName_et.getText().toString().trim();
         String dob = mDob_dp.getText().toString();
@@ -165,9 +178,7 @@ public class AddDetails extends AppCompatActivity implements View.OnClickListene
 
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
-
-                        Toast.makeText(AddDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
-
+                        checkInternet();
                     }
                 });
 
