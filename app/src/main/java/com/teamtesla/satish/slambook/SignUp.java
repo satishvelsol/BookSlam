@@ -127,20 +127,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //            Toast.makeText(this, "Registered Successfully", Toast.LENGTH_SHORT).show();
 //            Intent intent = new Intent(SignUp.this,AddDetails.class);
 //            startActivity(intent);
-//
                 ApiService service = ApiClient.getClient().create(ApiService.class);
                 Call<MSG> call = service.userSignup(name, email, mobile, password);
                 call.enqueue(new Callback<MSG>() {
                     @Override
                     public void onResponse(Call<MSG> call, Response<MSG> response) {
                         if (response.body().getSuccess() == 0) {
-                            Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            mName.setText("");
-                            mEmail.setText("");
-                            mMobile.setText("");
-                            mPassword.setText("");
+                            Intent register_success_push = new Intent(SignUp.this,Login.class);
+                            startActivity(register_success_push);
                         } else if (response.body().getSuccess() == 2) {
-                            Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            mMobile.setError(response.body().getMessage());
                         } else {
                             Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -148,7 +144,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
-                        checkInternet();
+                        Toast.makeText(SignUp.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
                     }
                 });
 

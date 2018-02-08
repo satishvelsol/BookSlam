@@ -7,7 +7,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
     <style name="heading">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -17,7 +16,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/headding_color</item>
     </style>
-
     <style name="edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -31,8 +29,6 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textColorHint">@color/colorPrimaryDark</item>
     </style>
-
-
     <style name="background_design_linearlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
@@ -57,7 +53,6 @@
         <item name="android:background">@drawable/circle</item>
         <item name="android:orientation">vertical</item>
     </style>
-
     <style name="background_design_edittext">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">0.8</item>
@@ -69,20 +64,43 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textAlignment" tools:ignore="NewApi">center</item>
     </style>
-
     <style name="show_details_relative_layout">
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/color5_design</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
     <style name="show_details_textview_label">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:paddingTop">8dp</item>
         <item name="android:textStyle">bold|italic</item>
         <item name="android:fontFamily" tools:ignore="NewApi">cursive</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="show_details_textview_references">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color5_design</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="show_details_cloud_design_left_part">
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:background">@drawable/show_details_design_left</item>
+    </style>
+    <style name="show_details_cloud_design_right_part">
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:background">@drawable/show_details_design_right</item>
     </style>
 </resources>
