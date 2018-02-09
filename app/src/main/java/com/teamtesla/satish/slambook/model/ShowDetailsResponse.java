@@ -2,8 +2,6 @@ package com.teamtesla.satish.slambook.model;
 
 import com.teamtesla.satish.slambook.FriendDetails;
 
-import java.util.List;
-
 /**
  * Created by user2 on 2/3/2018.
  */

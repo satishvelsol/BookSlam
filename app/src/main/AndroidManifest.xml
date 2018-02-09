@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login"
+        <activity android:name="com.teamtesla.satish.slambook.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,19 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewDetails"
+        <activity android:name="com.teamtesla.satish.slambook.ViewDetails"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Home"
+        <activity android:name="com.teamtesla.satish.slambook.Home"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
-        <activity android:name=".AddDetails"
+        <activity android:name="com.teamtesla.satish.slambook.AddDetails"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
-        <activity android:name=".SignUp"
+        <activity android:name="com.teamtesla.satish.slambook.SignUp"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ShowDetails"
+        <activity android:name="com.teamtesla.satish.slambook.ShowDetails"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
 

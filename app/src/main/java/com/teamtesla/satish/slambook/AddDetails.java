@@ -36,12 +36,12 @@ public class AddDetails extends AppCompatActivity {
         mSave_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveToServer();
+
+                    saveToServer();
+
             }
         });
-        if(!MyApplication.isNetworkAvailable(this)) {
-            checkInternet();
-        }
+
     }
     private void initalise() {
         mName_et = (EditText)findViewById(R.id.name_input);

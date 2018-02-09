@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +31,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        if(!MyApplication.isNetworkAvailable(this))
-        {
-            checkInternet();
-        }
+//        if(!MyApplication.isNetworkAvailable(this))
+//        {
+//            checkInternet();
+//        }
 
         initialise();
     }
@@ -86,10 +85,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private void signUp() {
 
-        if(!MyApplication.isNetworkAvailable(this))
-        {
-            checkInternet();
-        } else {
+
             String name = mName.getText().toString();
             String email = mEmail.getText().toString().trim();
             String mobile = mMobile.getText().toString().trim();
@@ -122,7 +118,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             } else if (password.length() <= 4) {
                 mPassword.setError("Password length must be more than 4");
                 mPassword.requestFocus();
-            } else {
+            } else  if(!MyApplication.isNetworkAvailable(this))
+            {
+                checkInternet();
+            } else
+                {
                 //call api
 //            Toast.makeText(this, "Registered Successfully", Toast.LENGTH_SHORT).show();
 //            Intent intent = new Intent(SignUp.this,AddDetails.class);
@@ -152,4 +152,4 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
-}
+

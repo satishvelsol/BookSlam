@@ -50,9 +50,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
         }
         initialise();
-        if(!MyApplication.isNetworkAvailable(this)) {
-            checkInternet();
-        }
+//        if(!MyApplication.isNetworkAvailable(this)) {
+//            checkInternet();
+//        }
     }
 
 
@@ -146,7 +146,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         }
                         @Override
                         public void onFailure(Call<MSG> call, Throwable t) {
-                            Toast.makeText(Login.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
+                            if (!MyApplication.isNetworkAvailable(Login.this)) {
+                                checkInternet();
+
+                            } else {
+                                Toast.makeText(Login.this, "Oops..! Something Went Wrong", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
@@ -155,9 +160,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
     private void signIn() {
 
-        if (!MyApplication.isNetworkAvailable(this)) {
-            checkInternet();
-        } else {
             final String mobile = mMobile.getText().toString().trim();
             final String password = mPassword.getText().toString();
             if (mobile.isEmpty()) {
@@ -172,6 +174,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             } else if (password.length() <= 4) {
                 mPassword.setError("Password length must be than 4");
                 mPassword.requestFocus();
+            } else if (!MyApplication.isNetworkAvailable(this)) {
+                checkInternet();
             } else {
                 ApiService service = ApiClient.getClient().create(ApiService.class);
                 Call<MSG> call = service.userLogin(mobile, password);
@@ -194,12 +198,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     }
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
-                        Toast.makeText(Login.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
+                        if (!MyApplication.isNetworkAvailable(Login.this)) {
+                            checkInternet();
+
+                        } else {
+                            Toast.makeText(Login.this, "Oops..! Something Went Wrong", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
         }
     }
-}
+
 
 
