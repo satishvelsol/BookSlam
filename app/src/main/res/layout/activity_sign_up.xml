@@ -5,7 +5,7 @@
     <LinearLayout
         android:id="@+id/sign_up_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:padding="15dp">
@@ -13,7 +13,7 @@
             style="@style/heading"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="SLAMBOOK">
+            android:text="@string/slambook">
         </TextView>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,18 +25,20 @@
             <EditText
                 android:id="@+id/name_input"
                 style="@style/edit_text"
-                android:hint="Name"/>
+                android:hint="@string/name"/>
             <LinearLayout
                 android:layout_width="65dp"
                 android:layout_height="50dp"
-                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="0dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:background="@drawable/edittext_imageview_background">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/name"/>
+                    android:src="@drawable/name"
+                    android:contentDescription="@string/todo"/>
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -48,18 +50,21 @@
             <EditText
                 android:id="@+id/email_input"
                 style="@style/edit_text"
-                android:hint="Email"/>
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"/>
             <LinearLayout
                 android:layout_width="65dp"
                 android:layout_height="50dp"
-                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="0dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:background="@drawable/edittext_imageview_background">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/email"/>
+                    android:src="@drawable/email"
+                    android:contentDescription="@string/todo"/>
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -73,18 +78,20 @@
                 style="@style/edit_text"
                 android:maxLength="10"
                 android:inputType="number"
-                android:hint="Mobile Number"/>
+                android:hint="@string/mobile_number"/>
             <LinearLayout
                 android:layout_width="65dp"
                 android:layout_height="50dp"
-                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="0dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:background="@drawable/edittext_imageview_background">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/phone"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -95,21 +102,23 @@
             <EditText
                 android:id="@+id/password_input"
                 style="@style/edit_text"
-                android:hint="Password"/>
+                android:inputType="textPassword"
+                android:hint="@string/password"/>
             <LinearLayout
                 android:layout_width="65dp"
                 android:layout_height="50dp"
-                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="0dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:background="@drawable/edittext_imageview_background">
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/lock"/>
+                    android:src="@drawable/lock"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
         </RelativeLayout>
-
         <Button
             android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
@@ -123,8 +132,6 @@
             android:fontFamily="serif"
             android:textAllCaps="false"
             android:textColor="#F8F3F1"/>
-
-
         <LinearLayout
             android:layout_marginTop="25dp"
             android:layout_width="match_parent"
@@ -136,10 +143,10 @@
                 android:layout_weight="0.6"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:text="Already have an account?"
+                android:text="@string/already_have_an_account"
                 android:textSize="16sp"
-                android:gravity="right"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="0dp"
                 android:textStyle="italic"
                 android:textColor="@color/colorPrimaryDark"/>
             <TextView
@@ -147,11 +154,11 @@
                 android:layout_weight="0.4"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:text="Click Here"
+                android:text="@string/click_here"
                 android:textSize="18sp"
-                android:gravity="left"
                 android:fontFamily="serif"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
                 android:textColor="@color/headding_color"
                 android:textStyle="bold" />
         </LinearLayout>

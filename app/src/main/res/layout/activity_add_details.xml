@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:id="@+id/adddetails_heading"
-        android:text="Add to Slam Book"
+        android:text="@string/add_to_slam_book"
         android:gravity="center"
         android:textSize="35sp"
         android:fontFamily="cursive"
@@ -37,7 +37,7 @@
                 <EditText
                     android:id="@+id/name_input"
                     style="@style/background_design_edittext"
-                    android:hint="My Name is"/>
+                    android:hint="@string/my_name_is"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -60,7 +60,7 @@
                 <EditText
                     android:id="@+id/nick_name_input"
                     style="@style/background_design_edittext"
-                    android:hint="Friends call me"/>
+                    android:hint="@string/friends_call_me"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -83,7 +83,7 @@
                 <EditText
                     android:id="@+id/dob_input"
                     style="@style/background_design_edittext"
-                    android:hint="Day when i was born" />
+                    android:hint="@string/day_when_i_was_born" />
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -106,7 +106,7 @@
                 <EditText
                     android:id="@+id/mobile_input"
                     style="@style/background_design_edittext"
-                    android:hint="Call me @"/>
+                    android:hint="@string/call_me"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -129,7 +129,7 @@
                 <EditText
                     android:id="@+id/address_input"
                     style="@style/background_design_edittext"
-                    android:hint="I'm from" />
+                    android:hint="@string/i_m_from" />
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -152,7 +152,7 @@
                 <EditText
                     android:id="@+id/bestfriend_input"
                     style="@style/background_design_edittext"
-                    android:hint="My best friend is"/>
+                    android:hint="@string/my_best_friend_is"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -175,7 +175,7 @@
                 <EditText
                     android:id="@+id/fav_dish_input"
                     style="@style/background_design_edittext"
-                    android:hint="Favourite dish"/>
+                    android:hint="@string/favourite_dish"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -198,7 +198,7 @@
                 <EditText
                     android:id="@+id/fav_color_input"
                     style="@style/background_design_edittext"
-                    android:hint="Favourite colour"/>
+                    android:hint="@string/favourite_colour"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -221,7 +221,7 @@
                 <EditText
                     android:id="@+id/hobbies_input"
                     style="@style/background_design_edittext"
-                    android:hint="Hobbies"/>
+                    android:hint="@string/hobbies"/>
                 <LinearLayout
                     style="@style/background_design_sub_linearlayout"
                     android:orientation="vertical">
@@ -238,7 +238,7 @@
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:textSize="18sp"
         android:textAllCaps="false"
         android:fontFamily="serif"

@@ -91,7 +91,7 @@ public class ViewDetails extends AppCompatActivity
 
                 @Override
                 public void onFailure(Call<mainResponse> call, Throwable t) {
-                    Toast.makeText(ViewDetails.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDetails.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
                 }
             });
         }

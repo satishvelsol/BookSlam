@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -147,13 +146,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         }
                         @Override
                         public void onFailure(Call<MSG> call, Throwable t) {
-                            Toast.makeText(Login.this, "Please check with your internet connection", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             });
-        
-    }
+        }
     }
     private void signIn() {
 
@@ -194,18 +192,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
-
-                        checkInternet();
+                        Toast.makeText(Login.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-
         }
     }
-
 }
 
 

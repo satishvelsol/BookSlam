@@ -1,13 +1,10 @@
 package com.teamtesla.satish.slambook;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,23 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ShowDetails extends AppCompatActivity implements View.OnClickListener {
 
 
-    TextView mName, mNickName, mDob, mMobile, mAddress, mBest_friend, mFav_dish, mFav_color, mHobbies;
+    TextView mcall_message_alert_heading,mName, mNickName, mDob, mMobile, mAddress, mBest_friend, mFav_dish, mFav_color, mHobbies;
     public String mobileNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_details);
         initialisation();
-        mName = (TextView) findViewById(R.id.name_label);
     }
-
     private void initialisation() {
         mName = (TextView) findViewById(R.id.name_label);
         mNickName = (TextView) findViewById(R.id.nick_name_label);
@@ -43,11 +36,7 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
         mFav_color = (TextView) findViewById(R.id.color_label);
         mHobbies = (TextView) findViewById(R.id.hobbies_label);
         mMobile.setOnClickListener(this);
-
-        //
-
         mMobile.setPaintFlags(mMobile.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
-        //
         setLayoutValues();
     }
 
@@ -83,7 +72,9 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             View call_sms_dialog = inflater.inflate(R.layout.activity_dialog_box, null, false);
             Button mCall_btn = (Button)call_sms_dialog.findViewById(R.id.call_button);
             Button mSms_btn = (Button)call_sms_dialog.findViewById(R.id.sms_button);
+            mcall_message_alert_heading = (TextView)call_sms_dialog.findViewById(R.id.call_message_alert_heading);
 
+            mcall_message_alert_heading.setText(mobileNumber);
             AlertDialog.Builder call_sms_dialog_builder = new AlertDialog.Builder(this);
             call_sms_dialog_builder.setView(call_sms_dialog);
             call_sms_dialog_builder.setCancelable(true);
@@ -91,8 +82,8 @@ public class ShowDetails extends AppCompatActivity implements View.OnClickListen
             ad.show();
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(ad.getWindow().getAttributes());
-            lp.width = 600;
-            lp.height = 500;
+            lp.width = 650;
+            //lp.height = 500;
             //lp.x=-170;
             //lp.y=100;
             ad.getWindow().setAttributes(lp);
