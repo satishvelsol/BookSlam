@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamtesla.satish.slambook.api.ApiClient;
 import com.teamtesla.satish.slambook.api.ApiService;
 import com.teamtesla.satish.slambook.api.MSG;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +35,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     TextView mSignupLink, mForgot_link;
     SharedPreferences logindetails;
     SharedPreferences.Editor logindetails_e;
+    RelativeLayout mlogin_progress;
+    private NewtonCradleLoading newtonCradleLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         logindetails = getSharedPreferences("slam_book_login_details",MODE_PRIVATE);
         logindetails_e = logindetails.edit();
+        mlogin_progress = (RelativeLayout)findViewById(R.id.login_progress);
 
         boolean res = logindetails.getBoolean("k1",false);
         if (res)
@@ -53,6 +58,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //        if(!MyApplication.isNetworkAvailable(this)) {
 //            checkInternet();
 //        }
+
+        newtonCradleLoading = (NewtonCradleLoading) findViewById(R.id.newton_cradle_loading);
+
+        if (newtonCradleLoading.isStart()) {
+
+            newtonCradleLoading.stop();
+        } else {
+
+            newtonCradleLoading.start();
+        }
     }
 
 
@@ -177,6 +192,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             } else if (!MyApplication.isNetworkAvailable(this)) {
                 checkInternet();
             } else {
+
+                //dialog ball
+                mlogin_progress.setVisibility(View.VISIBLE);
+
+
+                //end dialog ball
+
+
                 ApiService service = ApiClient.getClient().create(ApiService.class);
                 Call<MSG> call = service.userLogin(mobile, password);
                 call.enqueue(new Callback<MSG>() {
@@ -186,23 +209,28 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             logindetails_e.putBoolean("k1", true);
                             logindetails_e.putString("Username", mobile);
                             logindetails_e.commit();
+                            mlogin_progress.setVisibility(View.GONE);
                             Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, Home.class);
                             startActivity(intent);
 
                         } else if (response.body().getSuccess() == 2) {
                             Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            mlogin_progress.setVisibility(View.GONE);
                         } else {
                             Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            mlogin_progress.setVisibility(View.GONE);
                         }
                     }
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
+                        mlogin_progress.setVisibility(View.GONE);
                         if (!MyApplication.isNetworkAvailable(Login.this)) {
                             checkInternet();
 
                         } else {
                             Toast.makeText(Login.this, "Oops..! Something Went Wrong", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
