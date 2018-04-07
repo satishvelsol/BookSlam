@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamtesla.satish.slambook.api.ApiClient;
 import com.teamtesla.satish.slambook.api.ApiService;
 import com.teamtesla.satish.slambook.api.MSG;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,11 +27,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     EditText mName,mEmail,mMobile,mPassword;
     TextView mSignInLink;
     SharedPreferences sharedPreferences;
+    RelativeLayout msignup_progress;
+    private NewtonCradleLoading newtonCradleLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        msignup_progress = (RelativeLayout)findViewById(R.id.signup_progress);
 
 //        if(!MyApplication.isNetworkAvailable(this))
 //        {
@@ -37,6 +42,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //        }
 
         initialise();
+        newtonCradleLoading = (NewtonCradleLoading) findViewById(R.id.newton_cradle_loading);
+
+        if (newtonCradleLoading.isStart()) {
+
+            newtonCradleLoading.stop();
+        } else {
+
+            newtonCradleLoading.start();
+        }
     }
 
     private void checkInternet() {
@@ -123,6 +137,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 checkInternet();
             } else
                 {
+                    msignup_progress.setVisibility(View.VISIBLE);
                 //call api
 //            Toast.makeText(this, "Registered Successfully", Toast.LENGTH_SHORT).show();
 //            Intent intent = new Intent(SignUp.this,AddDetails.class);
@@ -133,17 +148,21 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onResponse(Call<MSG> call, Response<MSG> response) {
                         if (response.body().getSuccess() == 0) {
+                            msignup_progress.setVisibility(View.GONE);
                             Intent register_success_push = new Intent(SignUp.this,Login.class);
                             startActivity(register_success_push);
                         } else if (response.body().getSuccess() == 2) {
+                            msignup_progress.setVisibility(View.GONE);
                             mMobile.setError(response.body().getMessage());
                         } else {
+                            msignup_progress.setVisibility(View.GONE);
                             Toast.makeText(SignUp.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<MSG> call, Throwable t) {
+                        msignup_progress.setVisibility(View.GONE);
                         Toast.makeText(SignUp.this,"Oops..! Something went Wrong",Toast.LENGTH_SHORT).show();
                     }
                 });

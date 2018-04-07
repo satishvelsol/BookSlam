@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     Button mSignin_btn;
     EditText mMobile,mPassword;
-    String username;
+    //String username;
     TextView mSignupLink, mForgot_link;
     SharedPreferences logindetails;
     SharedPreferences.Editor logindetails_e;
